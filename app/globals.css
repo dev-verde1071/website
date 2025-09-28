@@ -1,9 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
   font-family: "Playfair Display", serif;
 }
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
   background: #F7F3ED;
