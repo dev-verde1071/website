@@ -5,7 +5,7 @@ import ProductCard from "../../../components/ProductCard";
 
 const truckProducts = [
   { id: 201, name: "Truck Toolbox", price: 550 },
-  { id: 202, name: "Truck Bed Rack", price: 720 },
+  { id: 202, name: "Truck Bed Rack", price: 720 }
 ];
 
 export default function TruckSolutions() {
