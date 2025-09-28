@@ -1,13 +1,9 @@
-// app/cart/page.js
 "use client";
 import { useContext } from "react";
 import { CartContext } from "../../components/CartContext";
 
 export default function CartPage() {
-  const { cart } = useContext(CartContext);
-
-  // calculate total
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const { cart, removeFromCart, updateQuantity, cartTotal } = useContext(CartContext);
 
   return (
     <main style={{ marginTop: "2rem" }}>
@@ -16,52 +12,23 @@ export default function CartPage() {
         <p>Your cart is empty.</p>
       ) : (
         <div>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            {cart.map((item) => (
-              <li
-                key={item.id}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "0.75rem",
-                  borderBottom: "1px solid #ccc",
-                  paddingBottom: "0.5rem",
-                }}
-              >
-                <span>
-                  {item.name} (x{item.quantity})
-                </span>
-                <span>${(item.price * item.quantity).toFixed(2)}</span>
-              </li>
-            ))}
-          </ul>
-          <div
-            style={{
-              marginTop: "1rem",
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-            }}
-          >
-            Total: ${total.toFixed(2)}
-          </div>
-          <div style={{ marginTop: "1.5rem" }}>
-            <button
-              style={{
-                background: "#C0392B",
-                color: "#fff",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "0.5rem",
-                border: "none",
-                cursor: "pointer",
-                fontWeight: "600",
-              }}
-            >
-              Checkout Now
-            </button>
-          </div>
+          {cart.map((item) => (
+            <div key={item.id} style={{ marginBottom: "1rem", borderBottom: "1px solid #ccc", paddingBottom: "1rem" }}>
+              <h3>{item.name}</h3>
+              <p>${item.price} x {item.quantity}</p>
+              <div>
+                <button onClick={() => updateQuantity(item.id, -1)}>-</button>
+                <button onClick={() => updateQuantity(item.id, 1)}>+</button>
+                <button onClick={() => removeFromCart(item.id)}>Remove</button>
+              </div>
+            </div>
+          ))}
+          <h2>Total: ${cartTotal}</h2>
+          <button style={{ background: "#C0392B", color: "#fff", padding: "0.75rem 1.5rem", border: "none", borderRadius: "0.5rem" }}>
+            Checkout Now
+          </button>
         </div>
       )}
     </main>
   );
 }
-
