@@ -1,23 +1,39 @@
 "use client";
+import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
 
 export default function Header() {
-  const { cartCount } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   return (
-    <header style={{ display: "flex", justifyContent: "space-between", padding: "1rem", background: "#F7F3ED", borderBottom: "1px solid #ddd" }}>
-      <a href="/" style={{ fontWeight: "bold" }}>Access Rack Solutions Inc.</a>
+    <header style={{
+      padding: "1rem",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      position: "sticky",
+      top: 0,
+      background: "#F7F3ED",
+      boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+      zIndex: 50
+    }}>
+      <h1 style={{ fontWeight: "bold", fontSize: "1.25rem" }}>Access Rack Solutions Inc.</h1>
       <nav style={{ display: "flex", gap: "1rem" }}>
-        <a href="/">Home</a>
+        <Link href="/">Home</Link>
+        <Link href="/company">Company</Link>
+        <Link href="/mission">Mission</Link>
+        <Link href="/portfolio">Portfolio</Link>
         <div style={{ position: "relative" }}>
-          <a href="/shop">Shop ▾</a>
-          <div style={{ position: "absolute", top: "1.5rem", left: 0, background: "#fff", border: "1px solid #ccc", padding: "0.5rem" }}>
-            <a href="/shop/van">Van Solutions</a><br />
-            <a href="/shop/truck">Truck Solutions</a>
+          <Link href="/shop">Shop</Link>
+          <div style={{ marginLeft: "1rem" }}>
+            <Link href="/shop/van">Van Solutions</Link>{" | "}
+            <Link href="/shop/truck">Truck Solutions</Link>
           </div>
         </div>
-        <a href="/cart">Cart ({cartCount})</a>
+        <Link href="/cart">
+          Cart ({cart.length})
+        </Link>
       </nav>
     </header>
   );
