@@ -1,17 +1,21 @@
+/* globals.css */
 * {
   box-sizing: border-box;
   font-family: 'Playfair Display', serif;
 }
-body {
+
+html, body {
   margin: 0;
   padding: 0;
   background: #F7F3ED;
   color: #000;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 a:hover {
   color: #C0392B;
 }
