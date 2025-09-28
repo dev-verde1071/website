@@ -4,9 +4,9 @@ import { CartContext } from "../../components/CartContext";
 import ProductCard from "../../components/ProductCard";
 
 const truckProducts = [
-  { id: 201, name: "Truck Toolbox", price: 550 },
-  { id: 202, name: "Truck Bed Rack", price: 800 },
-  { id: 203, name: "Fuel Transfer Tank", price: 1200 },
+  { id: 1, name: "Crossover Toolbox", price: 550 },
+  { id: 2, name: "Fuel Transfer Tank", price: 1200 },
+  { id: 3, name: "Pipe Rack", price: 750 }
 ];
 
 export default function TruckPage() {
@@ -19,7 +19,7 @@ export default function TruckPage() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1rem",
+          gap: "1rem"
         }}
       >
         {truckProducts.map((p) => (
