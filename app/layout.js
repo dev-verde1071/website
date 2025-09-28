@@ -2,6 +2,7 @@
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { CartProvider } from "../context/CartContext";
 
 export const metadata = {
   title: "Access Rack Solutions Inc.",
@@ -13,11 +14,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem" }}>
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        <CartProvider>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem" }}>
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );
