@@ -1,16 +1,16 @@
 "use client";
 import { useContext } from "react";
-import { CartContext } from "../../components/CartContext";
-import ProductCard from "../../components/ProductCard";
+import { CartContext } from "../components/CartContext";
+import ProductCard from "../components/ProductCard";
 
 const products = [
   { id: 1, name: "Van Shelving", price: 499 },
   { id: 2, name: "Ladder Rack", price: 299 },
   { id: 3, name: "Partition", price: 399 },
-  { id: 4, name: "Accessory Kit", price: 149 },
+  { id: 4, name: "Accessory Kit", price: 149 }
 ];
 
-export default function ShopPage() {
+export default function HomePage() {
   const { addToCart } = useContext(CartContext);
 
   return (
@@ -20,7 +20,7 @@ export default function ShopPage() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1rem",
+          gap: "1rem"
         }}
       >
         {products.map((p) => (
