@@ -18,12 +18,14 @@ export default function Header() {
         Access Rack Solutions Inc.
       </h1>
       <nav style={{ display: "flex", gap: "1rem" }}>
-        <a href="/">Home</a>
-        <a href="/company">Company</a>
-        <a href="/mission">Mission</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/shop">Shop</a>
-      </nav>
+  <a href="/">Home</a>
+  <a href="/company">Company</a>
+  <a href="/mission">Mission</a>
+  <a href="/portfolio">Portfolio</a>
+  <a href="/shop">Shop</a>
+  <a href="/cart">Cart</a>
+</nav>
+
     </header>
   );
 }
