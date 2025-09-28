@@ -1,4 +1,3 @@
-import React from "react";
 import "./globals.css";
 
 export const metadata = {
@@ -16,7 +15,9 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="container">{children}</div>
+      </body>
     </html>
   );
 }
