@@ -4,9 +4,10 @@ import { CartContext } from "../../../components/CartContext";
 import ProductCard from "../../../components/ProductCard";
 
 const vanProducts = [
-  { id: 101, name: "Van Shelving – Compact", price: 499 },
-  { id: 102, name: "Van Partition – Medium Roof", price: 699 },
-  { id: 103, name: "Van Ladder Rack – Aluminum", price: 899 }
+  { id: "van1", name: "Compact Van Shelving", price: 450 },
+  { id: "van2", name: "Van Ladder Rack", price: 320 },
+  { id: "van3", name: "Partition – Compact Van", price: 380 },
+  { id: "van4", name: "Interior Accessory Kit", price: 160 }
 ];
 
 export default function VanSolutionsPage() {
@@ -15,11 +16,14 @@ export default function VanSolutionsPage() {
   return (
     <main style={{ marginTop: "2rem" }}>
       <h1>Van Solutions</h1>
+      <p style={{ marginBottom: "1rem" }}>
+        Explore upfitting products designed for work vans – shelving, partitions, racks, and accessories.
+      </p>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1rem"
+          gap: "1rem",
         }}
       >
         {vanProducts.map((p) => (
