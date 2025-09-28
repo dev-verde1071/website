@@ -11,8 +11,8 @@ export default function Header() {
       <nav style={{ display: "flex", gap: "1rem" }}>
         <a href="/">Home</a>
         <div style={{ position: "relative" }}>
-          <a href="/shop">Shop</a>
-          <div style={{ position: "absolute", top: "1.5rem", left: 0, background: "#fff", border: "1px solid #ccc", padding: "0.5rem", display: "none" }}>
+          <a href="/shop">Shop ▾</a>
+          <div style={{ position: "absolute", top: "1.5rem", left: 0, background: "#fff", border: "1px solid #ccc", padding: "0.5rem" }}>
             <a href="/shop/van">Van Solutions</a><br />
             <a href="/shop/truck">Truck Solutions</a>
           </div>
