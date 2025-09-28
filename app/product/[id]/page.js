@@ -1,8 +1,8 @@
 "use client";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { useCart } from "../../context/CartContext";
 
-// Mock product data (replace with API later)
 const mockProducts = [
   {
     id: "1",
@@ -37,6 +37,7 @@ const mockProducts = [
 
 export default function ProductPage() {
   const params = useParams();
+  const { addToCart } = useCart();
   const product = mockProducts.find((p) => p.id === params.id);
 
   if (!product) {
@@ -62,6 +63,7 @@ export default function ProductPage() {
               <th>Distributor</th>
               <th>Price</th>
               <th>Status</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -70,6 +72,14 @@ export default function ProductPage() {
                 <td>{item.vendor}</td>
                 <td>${(item.priceCents / 100).toFixed(2)}</td>
                 <td>{item.stock}</td>
+                <td>
+                  <button
+                    className="button"
+                    onClick={() => addToCart(product, item)}
+                  >
+                    Add to Cart
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
