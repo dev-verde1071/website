@@ -3,12 +3,6 @@ import { CartProvider } from "../components/CartContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-export const metadata = {
-  title: "Access Rack Solutions Inc.",
-  description:
-    "Commercial van upfitting: shelving, ladder racks, partitions & accessories. Compare prices across distributors and ship direct."
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -20,11 +14,11 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <CartProvider>
+          <Header />
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem" }}>
-            <Header />
             {children}
-            <Footer />
           </div>
+          <Footer />
         </CartProvider>
       </body>
     </html>
