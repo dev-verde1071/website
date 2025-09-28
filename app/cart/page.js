@@ -3,39 +3,43 @@ import { useContext } from "react";
 import { CartContext } from "../../components/CartContext";
 
 export default function CartPage() {
-  const { cart, removeFromCart, clearCart, increaseQty, decreaseQty } = useContext(CartContext);
-
-  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const { cartItems, removeFromCart } = useContext(CartContext);
 
   return (
     <main style={{ marginTop: "2rem" }}>
       <h1>Your Cart</h1>
-      {cart.length === 0 ? (
+      {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div>
-          {cart.map((item) => (
-            <div key={item.id} style={{
-              borderBottom: "1px solid #ddd",
-              padding: "1rem 0",
-              display: "flex",
-              justifyContent: "space-between"
-            }}>
-              <div>
-                <h2>{item.name}</h2>
-                <p>${item.price.toFixed(2)} × {item.qty}</p>
-                <div>
-                  <button className="button" onClick={() => decreaseQty(item.id)}>-</button>
-                  <span style={{ margin: "0 1rem" }}>{item.qty}</span>
-                  <button className="button" onClick={() => increaseQty(item.id)}>+</button>
-                </div>
-              </div>
-              <button className="button" onClick={() => removeFromCart(item.id)}>Remove</button>
-            </div>
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {cartItems.map((item) => (
+            <li
+              key={item.id}
+              style={{
+                marginBottom: "1rem",
+                border: "1px solid #ccc",
+                padding: "1rem",
+                borderRadius: "0.5rem",
+              }}
+            >
+              <strong>{item.name}</strong> – ${item.price}
+              <button
+                onClick={() => removeFromCart(item.id)}
+                style={{
+                  marginLeft: "1rem",
+                  background: "#C0392B",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "0.25rem",
+                  padding: "0.25rem 0.75rem",
+                  cursor: "pointer",
+                }}
+              >
+                Remove
+              </button>
+            </li>
           ))}
-          <h2>Total: ${total.toFixed(2)}</h2>
-          <button className="button" onClick={clearCart}>Clear Cart</button>
-        </div>
+        </ul>
       )}
     </main>
   );
