@@ -1,14 +1,11 @@
-"use client";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+import "./globals.css";
+import { CartProvider } from "../components/CartContext";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Elements stripe={stripePromise}>{children}</Elements>
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );
