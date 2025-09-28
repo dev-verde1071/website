@@ -4,10 +4,9 @@ import { CartContext } from "../../components/CartContext";
 import ProductCard from "../../components/ProductCard";
 
 const products = [
-  { id: 1, name: "Van Shelving", price: 499 },
-  { id: 2, name: "Ladder Rack", price: 299 },
-  { id: 3, name: "Partition", price: 399 },
-  { id: 4, name: "Accessory Kit", price: 149 }
+  { id: 1, name: "General Rack System", price: 799 },
+  { id: 2, name: "Cargo Partition", price: 350 },
+  { id: 3, name: "Lighting Kit", price: 120 }
 ];
 
 export default function ShopPage() {
@@ -15,8 +14,14 @@ export default function ShopPage() {
 
   return (
     <main style={{ marginTop: "2rem" }}>
-      <h1>Shop Products</h1>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
+      <h1>Shop All Solutions</h1>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: "1rem"
+        }}
+      >
         {products.map((p) => (
           <ProductCard key={p.id} product={p} addToCart={addToCart} />
         ))}
