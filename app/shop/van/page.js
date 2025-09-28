@@ -4,12 +4,11 @@ import { CartContext } from "../../../components/CartContext";
 import ProductCard from "../../../components/ProductCard";
 
 const vanProducts = [
-  { id: 101, name: "Van Shelving System", price: 799 },
-  { id: 102, name: "Van Ladder Rack", price: 499 },
-  { id: 103, name: "Partition Wall", price: 399 },
+  { id: 101, name: "Van Bulkhead Partition", price: 350 },
+  { id: 102, name: "Van Roof Rack", price: 420 },
 ];
 
-export default function VanSolutionsPage() {
+export default function VanSolutions() {
   const { addToCart } = useContext(CartContext);
 
   return (
@@ -23,3 +22,4 @@ export default function VanSolutionsPage() {
     </main>
   );
 }
+
