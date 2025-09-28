@@ -4,9 +4,9 @@ import { CartContext } from "../../components/CartContext";
 import ProductCard from "../../components/ProductCard";
 
 const vanProducts = [
-  { id: 101, name: "Van Partition", price: 450 },
-  { id: 102, name: "Van Roof Rack", price: 600 },
-  { id: 103, name: "Van Ladder Holder", price: 220 },
+  { id: 1, name: "Van Ladder Rack", price: 450 },
+  { id: 2, name: "Shelving System – High Roof", price: 600 },
+  { id: 3, name: "Cargo Mat", price: 200 }
 ];
 
 export default function VanPage() {
@@ -19,7 +19,7 @@ export default function VanPage() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1rem",
+          gap: "1rem"
         }}
       >
         {vanProducts.map((p) => (
