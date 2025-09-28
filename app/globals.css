@@ -1,20 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
   box-sizing: border-box;
   font-family: "Playfair Display", serif;
 }
-
 html,
 body {
   margin: 0;
   padding: 0;
-  background: #f7f3ed;
+  background: #F7F3ED;
   color: #000;
 }
-
 a:hover {
-  color: #c0392b;
+  color: #C0392B;
 }
