@@ -2,7 +2,7 @@
   box-sizing: border-box;
   font-family: 'Playfair Display', serif;
 }
-html, body {
+body {
   margin: 0;
   padding: 0;
   background: #F7F3ED;
@@ -14,15 +14,4 @@ a {
 }
 a:hover {
   color: #C0392B;
-}
-.button {
-  background: #C0392B;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-.button:hover {
-  opacity: 0.85;
 }
