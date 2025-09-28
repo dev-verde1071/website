@@ -9,7 +9,9 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
 function CheckoutForm({ total }) {
   const stripe = useStripe();
@@ -24,11 +26,10 @@ function CheckoutForm({ total }) {
     setLoading(true);
     setMessage("");
 
-    // Call backend to create PaymentIntent
     const res = await fetch("/api/payment_intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: total * 100 }), // convert to cents
+      body: JSON.stringify({ amount: total * 100 }),
     });
     const { clientSecret, error } = await res.json();
     if (error) {
@@ -51,9 +52,7 @@ function CheckoutForm({ total }) {
 
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
-      <CardElement
-        options={{ style: { base: { fontSize: "16px" } } }}
-      />
+      <CardElement options={{ style: { base: { fontSize: "16px" } } }} />
       <button
         type="submit"
         disabled={!stripe || loading}
@@ -93,7 +92,6 @@ export default function CartPage() {
             ))}
           </ul>
           <h2>Total: ${total}</h2>
-
           <Elements stripe={stripePromise}>
             <CheckoutForm total={total} />
           </Elements>
