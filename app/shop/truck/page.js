@@ -4,12 +4,11 @@ import { CartContext } from "../../../components/CartContext";
 import ProductCard from "../../../components/ProductCard";
 
 const truckProducts = [
-  { id: 201, name: "Truck Toolbox", price: 899 },
-  { id: 202, name: "Fuel Transfer Tank", price: 1299 },
-  { id: 203, name: "Pipe Rack", price: 699 },
+  { id: 201, name: "Truck Toolbox", price: 550 },
+  { id: 202, name: "Truck Bed Rack", price: 720 },
 ];
 
-export default function TruckSolutionsPage() {
+export default function TruckSolutions() {
   const { addToCart } = useContext(CartContext);
 
   return (
