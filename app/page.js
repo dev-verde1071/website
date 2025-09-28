@@ -7,7 +7,7 @@ export default function HomePage() {
           color: "#F7F3ED",
           padding: "3rem",
           borderRadius: "1rem",
-          textAlign: "center",
+          textAlign: "center"
         }}
       >
         <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1rem" }}>
@@ -18,7 +18,7 @@ export default function HomePage() {
             maxWidth: "600px",
             margin: "0 auto",
             opacity: 0.9,
-            fontSize: "1.1rem",
+            fontSize: "1.1rem"
           }}
         >
           Van upfitting, shelving, partitions, and ladder racks – compare pricing
@@ -33,7 +33,7 @@ export default function HomePage() {
               fontWeight: 600,
               borderRadius: "0.75rem",
               padding: "0.75rem 1.5rem",
-              display: "inline-block",
+              display: "inline-block"
             }}
           >
             Shop Products
@@ -43,3 +43,4 @@ export default function HomePage() {
     </main>
   );
 }
+
