@@ -1,7 +1,7 @@
 "use client";
 import { useContext } from "react";
-import { CartContext } from "../../components/CartContext";
-import ProductCard from "../../components/ProductCard";
+import { CartContext } from "@/components/CartContext";
+import ProductCard from "@/components/ProductCard";
 
 const products = [
   { id: 1, name: "Van Shelving", price: 499 },
