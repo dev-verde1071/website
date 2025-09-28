@@ -112,3 +112,38 @@ a:hover {
   font-size: 0.9rem;
   color: #6b5b4d;
 }
+
+main {
+  padding: 2rem 1rem;
+  background: #fffdf8;
+  border: 1px solid #e6dccd;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+main h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+main p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+main ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  background: #c0392b;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+}
+.button:hover {
+  background: #a32d21;
+}
+
