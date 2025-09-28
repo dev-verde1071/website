@@ -1,6 +1,7 @@
 "use client";
 import { useContext, useState } from "react";
-import { CartContext } from "../../components/CartContext";
+import { CartContext } from "@/components/CartContext";
+import ProductCard from "@/components/ProductCard";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
