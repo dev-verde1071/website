@@ -1,40 +1,37 @@
-export default function ProductCard({ v }) {
-  if (!v) {
-    return (
-      <li className="product-card">
-        <div className="font-semibold mb-1">Invalid product</div>
-      </li>
-    );
-  }
+// components/ProductCard.js
+"use client";
 
-  const vendorItems = Array.isArray(v?.vendorItems) ? v.vendorItems : [];
-  const validOffers = vendorItems.filter(
-    (o) => o && typeof o.priceCents === "number"
-  );
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-  const minOffer =
-    validOffers.length > 0
-      ? validOffers.reduce((a, b) =>
-          a.priceCents <= b.priceCents ? a : b
-        )
-      : null;
+export default function ProductCard({ product }) {
+  const { addToCart } = useContext(CartContext);
 
   return (
-    <li className="product-card">
-      <div className="product-image"></div>
-      <h3 className="font-semibold mb-1">{v?.name || "Product"}</h3>
-      {minOffer ? (
-        <p className="text-sm">
-          From ${(minOffer.priceCents / 100).toFixed(2)} ·{" "}
-          {validOffers.length}{" "}
-          {validOffers.length === 1 ? "offer" : "offers"}
-        </p>
-      ) : (
-        <p className="text-sm">No offers yet</p>
-      )}
-      <a href={`/product/${v?.id ?? ""}`} className="underline text-sm">
-        Compare prices
-      </a>
-    </li>
+    <div
+      style={{
+        background: "#FFFDF8",
+        border: "1px solid #E6DCCD",
+        borderRadius: "1rem",
+        padding: "1rem",
+        textAlign: "center",
+      }}
+    >
+      <img
+        src={product.image}
+        alt={product.name}
+        style={{ width: "100%", borderRadius: "0.5rem" }}
+      />
+      <h2 style={{ fontSize: "1.2rem", margin: "0.5rem 0" }}>{product.name}</h2>
+      <p style={{ fontWeight: "bold", color: "#C0392B" }}>
+        ${product.price.toFixed(2)}
+      </p>
+      <button
+        className="button"
+        onClick={() => addToCart(product)}
+      >
+        Add to Cart
+      </button>
+    </div>
   );
 }
