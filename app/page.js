@@ -1,4 +1,4 @@
-export function HomePage() {
+export default function HomePage() {
   return (
     <main style={{ marginTop: "2rem" }}>
       <section style={{ background: "#000", color: "#F7F3ED", padding: "3rem", borderRadius: "1rem", textAlign: "center" }}>
@@ -27,4 +27,3 @@ export function HomePage() {
     </main>
   );
 }
-
