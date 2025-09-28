@@ -5,7 +5,7 @@ import ProductCard from "../../../components/ProductCard";
 
 const vanProducts = [
   { id: 101, name: "Van Bulkhead Partition", price: 350 },
-  { id: 102, name: "Van Roof Rack", price: 420 },
+  { id: 102, name: "Van Roof Rack", price: 420 }
 ];
 
 export default function VanSolutions() {
@@ -22,4 +22,3 @@ export default function VanSolutions() {
     </main>
   );
 }
-
