@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useContext } from "react";
-import { CartContext } from "../../../components/CartContext";
-import ProductCard from "../../../components/ProductCard";
+import { CartContext } from "@/components/CartContext";
+import ProductCard from "@/components/ProductCard";
 
 export default function VanSolutionsPage() {
   const { addToCart } = useContext(CartContext);
