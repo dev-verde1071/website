@@ -1,46 +1,45 @@
+// app/cart/page.js
 "use client";
-import React from "react";
-import { useCart } from "../context/CartContext";
+
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 export default function CartPage() {
-  const { cart, removeFromCart, clearCart } = useCart();
+  const { cart, removeFromCart, clearCart } = useContext(CartContext);
 
-  const total = cart.reduce((sum, item) => sum + (item.priceCents || 0), 0);
-
-  const handleCheckout = async () => {
-    const res = await fetch("/api/checkout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: cart }),
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert("Checkout failed.");
-    }
-  };
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   return (
-    <div className="bg-[#FFFDF8] rounded-2xl p-6 border border-[#E6DCCD] shadow-sm">
-      <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
+    <main style={{ marginTop: "2rem" }}>
+      <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+        Your Cart
+      </h1>
 
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <>
-          <ul className="space-y-4 mb-6">
-            {cart.map((item, index) => (
-              <li key={index} className="flex justify-between items-center border-b pb-2">
+        <div>
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            {cart.map((item) => (
+              <li
+                key={item.id}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  borderBottom: "1px solid #ddd",
+                  padding: "1rem 0",
+                }}
+              >
                 <div>
-                  <div className="font-medium">{item.title || "Product"}</div>
-                  <div className="text-sm text-[#7A6A5A]">
-                    ${(item.priceCents / 100).toFixed(2)}
-                  </div>
+                  <h2 style={{ margin: 0 }}>{item.name}</h2>
+                  <p style={{ margin: "0.25rem 0", fontSize: "0.9rem" }}>
+                    ${item.price.toFixed(2)} × {item.qty}
+                  </p>
                 </div>
                 <button
-                  onClick={() => removeFromCart(index)}
-                  className="text-[#C0392B] hover:underline"
+                  className="button"
+                  onClick={() => removeFromCart(item.id)}
                 >
                   Remove
                 </button>
@@ -48,23 +47,17 @@ export default function CartPage() {
             ))}
           </ul>
 
-          <div className="flex justify-between items-center mb-6">
-            <div className="font-bold text-lg">
-              Total: ${(total / 100).toFixed(2)}
-            </div>
-            <button onClick={clearCart} className="text-sm underline text-[#C0392B]">
+          <h2 style={{ marginTop: "1rem" }}>
+            Total: <span style={{ color: "#C0392B" }}>${total.toFixed(2)}</span>
+          </h2>
+
+          <div style={{ marginTop: "1.5rem" }}>
+            <button className="button" onClick={clearCart}>
               Clear Cart
             </button>
           </div>
-
-          <button
-            onClick={handleCheckout}
-            className="w-full bg-[#C0392B] text-white py-3 rounded-xl font-semibold shadow hover:bg-[#a83224]"
-          >
-            Checkout
-          </button>
-        </>
+        </div>
       )}
-    </div>
+    </main>
   );
 }
