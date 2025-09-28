@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 export default function CartPage() {
-  const { cart, removeFromCart, clearCart } = useContext(CartContext);
+  const { cart, removeFromCart, clearCart, increaseQty, decreaseQty } = useContext(CartContext);
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
@@ -36,11 +36,13 @@ export default function CartPage() {
                   <p style={{ margin: "0.25rem 0", fontSize: "0.9rem" }}>
                     ${item.price.toFixed(2)} × {item.qty}
                   </p>
+                  <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.5rem" }}>
+                    <button className="button" onClick={() => decreaseQty(item.id)}>-</button>
+                    <span>{item.qty}</span>
+                    <button className="button" onClick={() => increaseQty(item.id)}>+</button>
+                  </div>
                 </div>
-                <button
-                  className="button"
-                  onClick={() => removeFromCart(item.id)}
-                >
+                <button className="button" onClick={() => removeFromCart(item.id)}>
                   Remove
                 </button>
               </li>
