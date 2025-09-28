@@ -7,7 +7,12 @@ const portfolioItems = [
     title: "Ford F-250 XL Crew Cab with a 6.75-foot bed",
     description:
       "Aluminum Tank Industries 80 gallon L-shaped tank, GPI pump, RKI crossover toolbox, and Holman pipe rack.",
-    images: ["/images/portfolio/f250.jpg"] // Make sure to place your f250.jpg here
+     images: [
+    "/images/portfolio/f250/front.jpg",   // this will show on the card
+    "/images/portfolio/f250/rack.jpg", 
+    "/images/portfolio/f250/box.jpg",
+    "/images/portfolio/f250/pump.jpg"
+       ]
   },
   {
     title: "Ford Transit Connect",
