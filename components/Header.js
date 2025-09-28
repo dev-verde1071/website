@@ -1,7 +1,14 @@
 // components/Header.js
-import React from "react";
+"use client";
+import React, { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 export default function Header() {
+  const { cart } = useContext(CartContext);
+
+  // count items in cart
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <header
       style={{
@@ -19,7 +26,7 @@ export default function Header() {
       <h1 style={{ fontWeight: "bold", fontSize: "1.25rem" }}>
         Access Rack Solutions Inc.
       </h1>
-      <nav style={{ display: "flex", gap: "1rem" }}>
+      <nav style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
         <a href="/">Home</a>
         <a href="/company">Company</a>
         <a href="/mission">Mission</a>
@@ -53,10 +60,11 @@ export default function Header() {
           </div>
         </div>
 
-        {/* New Cart link */}
-        <a href="/cart">Cart</a>
+        {/* Cart link with item count */}
+        <a href="/cart">
+          Cart {itemCount > 0 && `(${itemCount})`}
+        </a>
       </nav>
     </header>
   );
 }
-
