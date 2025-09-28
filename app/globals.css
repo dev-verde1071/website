@@ -147,3 +147,27 @@ main ul {
   background: #a32d21;
 }
 
+/* Shop Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.product-card {
+  background: #fffdf8;
+  border: 1px solid #e6dccd;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.product-image {
+  background: #f1e9de;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
