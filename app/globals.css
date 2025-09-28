@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* custom overrides */
 * {
   box-sizing: border-box;
   font-family: "Playfair Display", serif;
