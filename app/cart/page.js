@@ -3,7 +3,9 @@ import { useContext } from "react";
 import { CartContext } from "../../components/CartContext";
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity, cartTotal } = useContext(CartContext);
+  const { cart, removeFromCart, clearCart } = useContext(CartContext);
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <main style={{ marginTop: "2rem" }}>
@@ -12,19 +14,38 @@ export default function CartPage() {
         <p>Your cart is empty.</p>
       ) : (
         <div>
-          {cart.map((item) => (
-            <div key={item.id} style={{ marginBottom: "1rem", borderBottom: "1px solid #ccc", paddingBottom: "1rem" }}>
-              <h3>{item.name}</h3>
-              <p>${item.price} x {item.quantity}</p>
-              <div>
-                <button onClick={() => updateQuantity(item.id, -1)}>-</button>
-                <button onClick={() => updateQuantity(item.id, 1)}>+</button>
-                <button onClick={() => removeFromCart(item.id)}>Remove</button>
-              </div>
-            </div>
-          ))}
-          <h2>Total: ${cartTotal}</h2>
-          <button style={{ background: "#C0392B", color: "#fff", padding: "0.75rem 1.5rem", border: "none", borderRadius: "0.5rem" }}>
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            {cart.map((item, idx) => (
+              <li key={idx} style={{ marginBottom: "1rem" }}>
+                {item.name} - ${item.price}
+                <button
+                  onClick={() => removeFromCart(item.id)}
+                  style={{
+                    marginLeft: "1rem",
+                    background: "#ccc",
+                    border: "none",
+                    borderRadius: "0.25rem",
+                    padding: "0.25rem 0.5rem"
+                  }}
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+          <h2>Total: ${total}</h2>
+          <button
+            onClick={clearCart}
+            style={{
+              marginTop: "1rem",
+              background: "#C0392B",
+              color: "#fff",
+              padding: "0.75rem 1.5rem",
+              borderRadius: "0.5rem",
+              border: "none",
+              cursor: "pointer"
+            }}
+          >
             Checkout Now
           </button>
         </div>
