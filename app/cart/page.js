@@ -1,46 +1,67 @@
+// app/cart/page.js
 "use client";
 import { useContext } from "react";
 import { CartContext } from "../../components/CartContext";
 
 export default function CartPage() {
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
+
+  // calculate total
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <main style={{ marginTop: "2rem" }}>
       <h1>Your Cart</h1>
-      {cartItems.length === 0 ? (
+      {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {cartItems.map((item) => (
-            <li
-              key={item.id}
-              style={{
-                marginBottom: "1rem",
-                border: "1px solid #ccc",
-                padding: "1rem",
-                borderRadius: "0.5rem",
-              }}
-            >
-              <strong>{item.name}</strong> – ${item.price}
-              <button
-                onClick={() => removeFromCart(item.id)}
+        <div>
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            {cart.map((item) => (
+              <li
+                key={item.id}
                 style={{
-                  marginLeft: "1rem",
-                  background: "#C0392B",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "0.25rem",
-                  padding: "0.25rem 0.75rem",
-                  cursor: "pointer",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginBottom: "0.75rem",
+                  borderBottom: "1px solid #ccc",
+                  paddingBottom: "0.5rem",
                 }}
               >
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
+                <span>
+                  {item.name} (x{item.quantity})
+                </span>
+                <span>${(item.price * item.quantity).toFixed(2)}</span>
+              </li>
+            ))}
+          </ul>
+          <div
+            style={{
+              marginTop: "1rem",
+              fontWeight: "bold",
+              fontSize: "1.1rem",
+            }}
+          >
+            Total: ${total.toFixed(2)}
+          </div>
+          <div style={{ marginTop: "1.5rem" }}>
+            <button
+              style={{
+                background: "#C0392B",
+                color: "#fff",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "0.5rem",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: "600",
+              }}
+            >
+              Checkout Now
+            </button>
+          </div>
+        </div>
       )}
     </main>
   );
 }
+
