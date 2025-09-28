@@ -1,11 +1,7 @@
-import "./globals.css";
-import { CartProvider } from "./context/CartContext";
-import Header from "./components/Header";
-
 export const metadata = {
   title: "Access Rack Solutions Inc.",
   description:
-    "Commercial van upfitting: shelving, ladder racks, partitions & accessories. Compare prices across distributors and ship direct."
+    "Commercial van upfitting: shelving, ladder racks, partitions & accessories. Compare prices across distributors and ship direct.",
 };
 
 export default function RootLayout({ children }) {
@@ -18,10 +14,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <CartProvider>
-          <Header />
-          <div className="container p-6">{children}</div>
-        </CartProvider>
+        {children}
       </body>
     </html>
   );
