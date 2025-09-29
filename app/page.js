@@ -1,33 +1,37 @@
-"use client";
-import { useContext } from "react";
-import { CartContext } from "@/components/CartContext";
-import ProductCard from "@/components/ProductCard";
-
-const products = [
-  { id: 1, name: "Van Shelving", price: 499 },
-  { id: 2, name: "Ladder Rack", price: 299 },
-  { id: 3, name: "Partition", price: 399 },
-  { id: 4, name: "Accessory Kit", price: 149 }
-];
-
-export default function ShopPage() {
-  const { addToCart } = useContext(CartContext);
-
+export default function HomePage() {
   return (
     <main style={{ marginTop: "2rem" }}>
-      <h1>Shop Products</h1>
-      <div
+      <section
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1rem"
+          background: "#000",
+          color: "#F7F3ED",
+          padding: "3rem",
+          borderRadius: "1rem",
+          textAlign: "center"
         }}
       >
-        {products.map((p) => (
-          <ProductCard key={p.id} product={p} addToCart={addToCart} />
-        ))}
-      </div>
+        <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+          Welcome to Access Rack Solutions Inc.
+        </h1>
+        <p style={{ maxWidth: "600px", margin: "0 auto", opacity: 0.9, fontSize: "1.1rem" }}>
+          Van upfitting, shelving, partitions, and ladder racks – compare pricing across distributors and ship direct.
+        </p>
+        <div style={{ marginTop: "1.5rem" }}>
+          <a
+            href="/shop"
+            style={{
+              background: "#C0392B",
+              color: "#fff",
+              fontWeight: 600,
+              borderRadius: "0.75rem",
+              padding: "0.75rem 1.5rem",
+              display: "inline-block"
+            }}
+          >
+            Shop Products
+          </a>
+        </div>
+      </section>
     </main>
   );
 }
-
