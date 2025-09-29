@@ -1,12 +1,13 @@
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { CartProvider } from "../components/CartContext";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { CartProvider } from "@/components/CartContext";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   title: "Access Rack Solutions Inc.",
   description:
-    "Van and truck upfitting solutions – shelving, ladder racks, partitions, accessories."
+    "Commercial van upfitting: shelving, ladder racks, partitions & accessories."
 };
 
 export default function RootLayout({ children }) {
@@ -19,14 +20,17 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <CartProvider>
-          <Header />
-          <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem" }}>
-            {children}
-          </main>
-          <Footer />
-        </CartProvider>
+        <SessionProvider>
+          <CartProvider>
+            <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem" }}>
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </CartProvider>
+        </SessionProvider>
       </body>
     </html>
   );
 }
+
