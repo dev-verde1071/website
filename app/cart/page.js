@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "@/components/CartContext";
 
@@ -26,21 +27,24 @@ export default function CartPage() {
               </li>
             ))}
           </ul>
-          <h3>Total: ${total}</h3>
-          <button
-            style={{
-              background: "#C0392B",
-              color: "#fff",
-              padding: "0.75rem 1.5rem",
-              borderRadius: "0.5rem",
-              border: "none",
-              cursor: "pointer"
-            }}
-          >
-            Checkout Now
-          </button>
+          <h3>Total: ${total.toFixed(2)}</h3>
+          <Link href="/checkout">
+            <button
+              style={{
+                background: "#C0392B",
+                color: "#fff",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "0.5rem",
+                border: "none",
+                cursor: "pointer"
+              }}
+            >
+              Checkout Now
+            </button>
+          </Link>
         </>
       )}
     </main>
   );
 }
+
