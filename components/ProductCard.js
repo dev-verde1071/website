@@ -1,11 +1,29 @@
 "use client";
-export default function ProductCard({ product, addToCart }) {
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
+
+export default function ProductCard({ product }) {
+  const { addToCart } = useContext(CartContext);
+
   return (
-    <div style={{ border: "1px solid #E6DCCD", borderRadius: "1rem", padding: "1rem", textAlign: "center" }}>
-      <div style={{ background: "#F1E9DE", height: "150px", borderRadius: "0.75rem", marginBottom: "0.75rem" }}>
-        <span style={{ lineHeight: "150px" }}>Image</span>
-      </div>
-      <h3>{product.name}</h3>
+    <div
+      style={{
+        border: "1px solid #ddd",
+        borderRadius: "0.5rem",
+        padding: "1rem",
+        textAlign: "center",
+        background: "#fff"
+      }}
+    >
+      <div
+        style={{
+          background: "#f0f0f0",
+          borderRadius: "0.5rem",
+          aspectRatio: "4/3",
+          marginBottom: "1rem"
+        }}
+      ></div>
+      <h3 style={{ marginBottom: "0.5rem" }}>{product.name}</h3>
       <p>${product.price}</p>
       <button
         onClick={() => addToCart(product)}
@@ -13,8 +31,8 @@ export default function ProductCard({ product, addToCart }) {
           background: "#C0392B",
           color: "#fff",
           padding: "0.5rem 1rem",
-          borderRadius: "0.5rem",
           border: "none",
+          borderRadius: "0.25rem",
           cursor: "pointer"
         }}
       >
