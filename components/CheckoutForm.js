@@ -15,7 +15,6 @@ export default function CheckoutForm({ amount }) {
     setLoading(true);
     setMessage("");
 
-    // Create payment intent
     const res = await fetch("/api/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -29,32 +28,16 @@ export default function CheckoutForm({ amount }) {
       }
     });
 
-    if (result.error) {
-      setMessage(result.error.message);
-    } else if (result.paymentIntent.status === "succeeded") {
-      setMessage("✅ Payment successful!");
-    }
+    if (result.error) setMessage(result.error.message);
+    else if (result.paymentIntent.status === "succeeded") setMessage("✅ Payment successful!");
 
     setLoading(false);
   };
 
   return (
     <form onSubmit={handleSubmit} style={{ maxWidth: "400px", margin: "0 auto" }}>
-      <CardElement
-        options={{ style: { base: { fontSize: "16px" } } }}
-      />
-      <button
-        disabled={!stripe || loading}
-        style={{
-          marginTop: "1rem",
-          background: "#C0392B",
-          color: "#fff",
-          padding: "0.75rem 1.5rem",
-          borderRadius: "0.5rem",
-          border: "none",
-          cursor: "pointer"
-        }}
-      >
+      <CardElement options={{ style: { base: { fontSize: "16px" } } }} />
+      <button disabled={!stripe || loading} style={{ marginTop: "1rem", background: "#C0392B", color: "#fff", padding: "0.75rem 1.5rem", borderRadius: "0.5rem", border: "none", cursor: "pointer" }}>
         {loading ? "Processing..." : `Pay $${(amount / 100).toFixed(2)}`}
       </button>
       {message && <p style={{ marginTop: "1rem" }}>{message}</p>}
