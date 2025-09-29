@@ -1,49 +1,29 @@
 "use client";
-import LightboxGallery from "../../components/LightboxGallery";
-
-const portfolioItems = [
-  {
-    title: "Ford F-250 XL Crew Cab with a 6.75-foot bed",
-    description:
-      "Aluminum Tank Industries 80 gallon L-shaped tank, GPI pump, RKI crossover toolbox, and Holman pipe rack.",
-     images: [
-    "/images/portfolio/f250/front.jpg",   // this will show on the card
-    "/images/portfolio/f250/rack.jpg", 
-    "/images/portfolio/f250/box.jpg",
-    "/images/portfolio/f250/pump.jpg"
-       ]
-  },
-  {
-    title: "Ford Transit Connect",
-    description:
-      "Custom shelving and ladder rack installation for a commercial plumbing van.",
-    images: ["/images/portfolio/transit1.jpg", "/images/portfolio/transit2.jpg"]
-  },
-  {
-    title: "Mercedes Sprinter",
-    description:
-      "Full interior upfit with partitions, shelving, and secure tool storage.",
-    images: ["/images/portfolio/sprinter1.jpg", "/images/portfolio/sprinter2.jpg"]
-  },
-  {
-    title: "Ram ProMaster",
-    description:
-      "Electrical contractor van with ladder rack and custom shelving solution.",
-    images: ["/images/portfolio/promaster1.jpg"]
-  }
-];
+import Gallery from "@/components/Lightbox";
+import f250 from "@/public/f250.jpg";
 
 export default function PortfolioPage() {
+  const projects = [
+    {
+      title: "Ford F-250 XL Crew Cab with 6.75-foot bed",
+      description:
+        "Aluminum Tank Industries 80 gallon L shaped tank, GPI pump, RKI crossover toolbox and Holman pipe rack",
+      images: [
+        { src: f250.src, alt: "F-250 upfit" }
+      ]
+    }
+  ];
+
   return (
-    <section>
+    <main style={{ marginTop: "2rem" }}>
       <h1>Portfolio</h1>
-      {projects.map((p, i) => (
-        <div key={i} style={{ margin: "2rem 0" }}>
+      {projects.map((p, idx) => (
+        <div key={idx} style={{ marginBottom: "2rem", border: "1px solid #ddd", borderRadius: "1rem", padding: "1rem" }}>
           <h2>{p.title}</h2>
           <p>{p.description}</p>
-          <LightboxGallery images={p.images} />
+          <Gallery images={p.images} />
         </div>
       ))}
-    </section>
+    </main>
   );
 }
