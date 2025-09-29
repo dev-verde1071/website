@@ -1,43 +1,29 @@
 "use client";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { CartContext } from "@/components/CartContext";
 import ProductCard from "@/components/ProductCard";
 
+const truckProducts = [
+  { id: 201, name: "Crossover Toolbox", price: 650, brand: "WeatherGuard" },
+  { id: 202, name: "Truck Ladder Rack", price: 425, brand: "Holman" }
+];
+
 export default function TruckSolutionsPage() {
   const { addToCart } = useContext(CartContext);
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      const res = await fetch("/api/products?category=truck");
-      const data = await res.json();
-      setProducts(data);
-    }
-    fetchProducts();
-  }, []);
 
   return (
     <main style={{ marginTop: "2rem" }}>
       <h1>Truck Solutions</h1>
-      <p>Upfitting products designed for pickup trucks.</p>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1rem",
+          gap: "1rem"
         }}
       >
-        {products.length > 0 ? (
-          products.map((p) => (
-            <ProductCard
-              key={p.id}
-              product={p}
-              addToCart={addToCart}
-            />
-          ))
-        ) : (
-          <p>No truck products available.</p>
-        )}
+        {truckProducts.map((p) => (
+          <ProductCard key={p.id} product={p} addToCart={addToCart} />
+        ))}
       </div>
     </main>
   );
