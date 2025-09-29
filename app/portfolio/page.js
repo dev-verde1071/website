@@ -10,9 +10,10 @@ export default function PortfolioPage() {
       description:
         "Aluminum Tank industries 80 gallon L shaped tank, GPI pump, RKI crossover toolbox and Holman pipe rack",
       images: [
-        "/f250.jpg", // main image
-        "/f250-2.jpg", // extra images
-        "/f250-3.jpg"
+        "/f250/front.jpg", // main image
+        "/f250/rack.jpg", // extra images
+        "/f250/box.jpg"
+        "/f250/pump.jpg"
       ]
     }
   ];
