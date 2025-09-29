@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState } from "react";
+import LightboxGallery from "../../components/LightboxGallery";
 
 const portfolioItems = [
   {
