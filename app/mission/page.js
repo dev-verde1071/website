@@ -1,8 +1,13 @@
 export default function MissionPage() {
   return (
-    <main style={{ marginTop: "2rem" }}>
+    <section>
       <h1>Our Mission</h1>
-      <p>We aim to provide affordable, reliable, and durable upfitting solutions for commercial vans nationwide.</p>
-    </main>
+      <p>
+        At Access Rack Solutions, our mission is to deliver reliable van and
+        truck upfitting solutions tailored to the needs of hardworking
+        professionals. We partner with leading brands to ensure quality,
+        durability, and value.
+      </p>
+    </section>
   );
 }
