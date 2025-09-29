@@ -11,9 +11,7 @@ export default function CheckoutPage() {
   const { cart } = useContext(CartContext);
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  if (cart.length === 0) {
-    return <p>Your cart is empty.</p>;
-  }
+  if (cart.length === 0) return <p>Your cart is empty.</p>;
 
   return (
     <main style={{ marginTop: "2rem" }}>
