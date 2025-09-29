@@ -1,43 +1,29 @@
 "use client";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { CartContext } from "@/components/CartContext";
 import ProductCard from "@/components/ProductCard";
 
+const vanProducts = [
+  { id: 101, name: "Transit Shelving", price: 550, brand: "Holman" },
+  { id: 102, name: "Van Partition", price: 375, brand: "Adrian Steel" }
+];
+
 export default function VanSolutionsPage() {
   const { addToCart } = useContext(CartContext);
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      const res = await fetch("/api/products?category=van");
-      const data = await res.json();
-      setProducts(data);
-    }
-    fetchProducts();
-  }, []);
 
   return (
     <main style={{ marginTop: "2rem" }}>
       <h1>Van Solutions</h1>
-      <p>Upfitting products designed for commercial vans.</p>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1rem",
+          gap: "1rem"
         }}
       >
-        {products.length > 0 ? (
-          products.map((p) => (
-            <ProductCard
-              key={p.id}
-              product={p}
-              addToCart={addToCart}
-            />
-          ))
-        ) : (
-          <p>No van products available.</p>
-        )}
+        {vanProducts.map((p) => (
+          <ProductCard key={p.id} product={p} addToCart={addToCart} />
+        ))}
       </div>
     </main>
   );
