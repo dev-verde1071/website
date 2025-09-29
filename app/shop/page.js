@@ -1,21 +1,17 @@
 "use client";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { CartContext } from "@/components/CartContext";
 import ProductCard from "@/components/ProductCard";
 
+const products = [
+  { id: 1, name: "Van Shelving", price: 499, brand: "Holman" },
+  { id: 2, name: "Ladder Rack", price: 299, brand: "WeatherGuard" },
+  { id: 3, name: "Partition", price: 399, brand: "Adrian Steel" },
+  { id: 4, name: "Accessory Kit", price: 149, brand: "Kargo Master" }
+];
 
 export default function ShopPage() {
   const { addToCart } = useContext(CartContext);
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      const res = await fetch("/api/products");
-      const data = await res.json();
-      setProducts(data);
-    }
-    fetchProducts();
-  }, []);
 
   return (
     <main style={{ marginTop: "2rem" }}>
@@ -24,20 +20,12 @@ export default function ShopPage() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1rem",
+          gap: "1rem"
         }}
       >
-        {products.length > 0 ? (
-          products.map((p) => (
-            <ProductCard
-              key={p.id}
-              product={p}
-              addToCart={addToCart}
-            />
-          ))
-        ) : (
-          <p>No products available.</p>
-        )}
+        {products.map((p) => (
+          <ProductCard key={p.id} product={p} addToCart={addToCart} />
+        ))}
       </div>
     </main>
   );
