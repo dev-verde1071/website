@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 export default function PortfolioPage() {
   const projects = [
@@ -18,15 +18,8 @@ export default function PortfolioPage() {
     }
   ];
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
+ const [isOpen, setIsOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
-
-  const openLightbox = (project, index) => {
-    setActiveProject(project);
-    setPhotoIndex(index);
-    setIsOpen(true);
-  };
 
   return (
     <main style={{ marginTop: "2rem" }}>
@@ -54,6 +47,10 @@ export default function PortfolioPage() {
                 cursor: "pointer",
                 maxWidth: "400px"
               }}
+              onClick={() => {
+                setActiveProject(p);
+                setIsOpen(true);
+              }}
             >
               <img
                 src={p.images[0]}
@@ -63,27 +60,7 @@ export default function PortfolioPage() {
                   borderRadius: "0.75rem",
                   border: "1px solid #ccc"
                 }}
-                onClick={() => openLightbox(p, 0)}
               />
-            </div>
-
-            {/* Thumbnail gallery */}
-            <div style={{ display: "flex", gap: "0.5rem", marginTop: "1rem" }}>
-              {p.images.slice(1).map((img, idx) => (
-                <img
-                  key={idx}
-                  src={img}
-                  alt={`${p.title} thumbnail ${idx}`}
-                  style={{
-                    width: "80px",
-                    height: "60px",
-                    objectFit: "cover",
-                    borderRadius: "0.5rem",
-                    cursor: "pointer"
-                  }}
-                  onClick={() => openLightbox(p, idx + 1)}
-                />
-              ))}
             </div>
           </div>
         ))}
@@ -91,26 +68,9 @@ export default function PortfolioPage() {
 
       {isOpen && activeProject && (
         <Lightbox
-          mainSrc={activeProject.images[photoIndex]}
-          nextSrc={
-            activeProject.images[(photoIndex + 1) % activeProject.images.length]
-          }
-          prevSrc={
-            activeProject.images[
-              (photoIndex + activeProject.images.length - 1) %
-                activeProject.images.length
-            ]
-          }
-          onCloseRequest={() => setIsOpen(false)}
-          onMovePrevRequest={() =>
-            setPhotoIndex(
-              (photoIndex + activeProject.images.length - 1) %
-                activeProject.images.length
-            )
-          }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % activeProject.images.length)
-          }
+          open={isOpen}
+          close={() => setIsOpen(false)}
+          slides={activeProject.images.map((img) => ({ src: img }))}
         />
       )}
     </main>
