@@ -1,11 +1,12 @@
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { CartProvider } from "@/components/CartContext";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { CartProvider } from "../components/CartContext";
 
 export const metadata = {
   title: "Access Rack Solutions Inc.",
-  description: "Van and truck upfitting – shelving, racks, partitions & accessories."
+  description:
+    "Van and truck upfitting solutions – shelving, ladder racks, partitions, accessories."
 };
 
 export default function RootLayout({ children }) {
@@ -19,14 +20,13 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <CartProvider>
-          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem" }}>
-            <Header />
+          <Header />
+          <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "1rem" }}>
             {children}
-            <Footer />
-          </div>
+          </main>
+          <Footer />
         </CartProvider>
       </body>
     </html>
   );
 }
-
