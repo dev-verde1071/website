@@ -16,12 +16,9 @@ export default function CartPage() {
         <>
           <ul>
             {cart.map((item) => (
-              <li key={item.id} style={{ marginBottom: "1rem" }}>
+              <li key={item.id}>
                 {item.name} – ${item.price} × {item.qty}
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  style={{ marginLeft: "1rem", color: "red" }}
-                >
+                <button onClick={() => removeFromCart(item.id)} style={{ marginLeft: "1rem", color: "red" }}>
                   Remove
                 </button>
               </li>
@@ -29,16 +26,7 @@ export default function CartPage() {
           </ul>
           <h3>Total: ${total.toFixed(2)}</h3>
           <Link href="/checkout">
-            <button
-              style={{
-                background: "#C0392B",
-                color: "#fff",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "0.5rem",
-                border: "none",
-                cursor: "pointer"
-              }}
-            >
+            <button style={{ background: "#C0392B", color: "#fff", padding: "0.75rem 1.5rem", borderRadius: "0.5rem", border: "none", cursor: "pointer" }}>
               Checkout Now
             </button>
           </Link>
