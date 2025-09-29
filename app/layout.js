@@ -1,14 +1,8 @@
-import "./globals.css";
+"use client";
+import { SessionProvider } from "next-auth/react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/components/CartContext";
-import { SessionProvider } from "next-auth/react";
-
-export const metadata = {
-  title: "Access Rack Solutions Inc.",
-  description:
-    "Commercial van upfitting: shelving, ladder racks, partitions & accessories."
-};
 
 export default function RootLayout({ children }) {
   return (
